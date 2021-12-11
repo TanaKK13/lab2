@@ -1,11 +1,5 @@
 import csv
 
-with open('anime.csv', newline = '', encoding='utf-8') as csvfile:
-    reader = csv.DictReader (csvfile, delimiter = ',')
-    all_anime = []
-    for row in reader:
-        all_anime.append (row['Name']) #записываем все названия аниме в один список
-        
 #функция, по которой будем сортировать ответы
 def res(quest, answ):
     with open('anime.csv', newline = '', encoding='utf-8') as csvfile:
@@ -38,6 +32,12 @@ def res(quest, answ):
                     if answ not in row[quest]:
                             if row['Name'] in all_anime: #проверяем есть ли еще такое аниме в нашем списке или его удалили при другом условии
                                 all_anime.remove(row['Name'])#проверяем условие на True/False, если не удовлетворяет условию, то удаляем аниме
+                                
+with open('anime.csv', newline = '', encoding='utf-8') as csvfile:
+    reader = csv.DictReader (csvfile, delimiter = ',')
+    all_anime = []
+    for row in reader:
+        all_anime.append (row['Name']) #записываем все названия аниме в один список
                                 
 print('Пройдите опрос, чтобы мы подобрали подходящие аниме (если какой-то пункт не важен, нажмите "Enter")')               
 questions = ('Введите минимальный рейтинг аниме от 1 до 10:',
