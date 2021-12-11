@@ -1,6 +1,5 @@
 import csv
 
-
 with open('anime.csv', newline = '', encoding='utf-8') as csvfile:
     reader = csv.DictReader (csvfile, delimiter = ',')
     all_anime = []
@@ -75,9 +74,11 @@ for question in answers:
         else:
             res(question, answer)
             
-#записываем ответ    
-with open("output.txt", 'w', encoding='utf-8') as res:
-    for i in all_anime:
-        res.write(f'{i}\n')
-
-print('Результаты сформированы и помещены в файл output.txt!')
+#записываем ответ
+if len(all_anime) == 0:
+    print ('По вашему запросу ничего не найдено')
+else:
+    with open("output.txt", 'w', encoding='utf-8') as res:
+        for i in all_anime:
+            res.write(f'{i}\n')
+    print('Аниме по вашему запросу были добавлены в файл "output.txt!"')
